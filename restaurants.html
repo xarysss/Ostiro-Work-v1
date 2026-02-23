@@ -59,6 +59,39 @@
 
         <div class="restaurants-layout">
 
+            <!-- BANDEAU "COMMANDEZ PAR TÉLÉPHONE" -->
+            <div style="
+                grid-column: 1 / -1;
+                background: linear-gradient(135deg, rgba(255,123,0,0.12), rgba(255,123,0,0.04));
+                border: 1px solid rgba(255,123,0,0.35);
+                border-radius: 20px;
+                padding: 28px 36px;
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                margin-bottom: 10px;
+            ">
+                <div style="
+                    width: 56px; height: 56px; border-radius: 50%;
+                    background: rgba(255,123,0,0.2);
+                    display: flex; align-items: center; justify-content: center;
+                    flex-shrink: 0;
+                ">
+                    <i class="fa-solid fa-phone" style="color:#FF7B00; font-size:1.5rem;"></i>
+                </div>
+                <div>
+                    <p
+                        style="font-family:'Anton',sans-serif; font-size:1.15rem; color:white; letter-spacing:1px; margin-bottom:4px;">
+                        COMMANDEZ PAR TÉLÉPHONE
+                    </p>
+                    <p style="color:#999; font-size:0.88rem; line-height:1.5;">
+                        La commande se fait directement par appel auprès du restaurant de votre choix.<br>
+                        Appelez, passez commande et récupérez votre repas — <span
+                            style="color:#FF7B00; font-weight:600;">c'est aussi simple que ça.</span>
+                    </p>
+                </div>
+            </div>
+
             <!-- LIST (Left) -->
             <div class="locations-list">
 
@@ -73,8 +106,10 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>06 81 86 97 40</span>
                     </div>
-                    <a href="tel:0681869740" class="btn btn-primary"
-                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                    <a href="tel:0681869740" class="btn-glow"
+                        style="margin-top:14px; display:inline-flex; align-items:center; gap:10px; font-size:0.95rem;">
+                        <i class="fa-solid fa-phone"></i> Appeler pour commander
+                    </a>
                 </div>
 
                 <!-- Narbonne -->
@@ -88,8 +123,10 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>07 49 07 70 73</span>
                     </div>
-                    <a href="tel:0749077073" class="btn btn-primary"
-                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                    <a href="tel:0749077073" class="btn-glow"
+                        style="margin-top:14px; display:inline-flex; align-items:center; gap:10px; font-size:0.95rem;">
+                        <i class="fa-solid fa-phone"></i> Appeler pour commander
+                    </a>
                 </div>
 
                 <!-- Perpignan -->
@@ -103,8 +140,10 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>06 88 12 59 24</span>
                     </div>
-                    <a href="tel:0688125924" class="btn btn-primary"
-                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                    <a href="tel:0688125924" class="btn-glow"
+                        style="margin-top:14px; display:inline-flex; align-items:center; gap:10px; font-size:0.95rem;">
+                        <i class="fa-solid fa-phone"></i> Appeler pour commander
+                    </a>
                 </div>
 
             </div>
@@ -116,6 +155,7 @@
             </div>
 
         </div>
+
 
     </main>
 
@@ -178,69 +218,166 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
-        // Init Map
-        // Centered roughly between the 3 cities
-        var map = L.map('map').setView([43.0, 3.0], 9);
+        // ── Init Map ──────────────────────────────────────
+        var map = L.map('map', { zoomControl: true, scrollWheelZoom: true })
+            .setView([43.25, 3.05], 9);
 
-        // Dark Mode Tiles (CartoDB Dark Matter)
+
+        // Dark tiles
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 19
         }).addTo(map);
 
-        // Custom Icon for Crousty Wok (Orange Marker)
-        var croustyIcon = L.icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
+        // ── Custom pulsing orange marker ──────────────────
+        function makeIcon(active) {
+            return L.divIcon({
+                className: '',
+                html: `
+                    <div style="
+                        position:relative; width:36px; height:36px;
+                        display:flex; align-items:center; justify-content:center;
+                    ">
+                        <div style="
+                            position:absolute; width:36px; height:36px;
+                            border-radius:50%; background:rgba(255,123,0,0.25);
+                            animation: pulse 1.8s infinite;
+                        "></div>
+                        <div style="
+                            width:18px; height:18px; border-radius:50%;
+                            background:#FF7B00;
+                            border: 3px solid #fff;
+                            box-shadow: 0 0 12px rgba(255,123,0,0.8);
+                            position:relative; z-index:2;
+                        "></div>
+                    </div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18],
+                popupAnchor: [0, -22]
+            });
+        }
 
-        // Locations Data
+        // ── Inject pulse animation once ───────────────────
+        var styleEl = document.createElement('style');
+        styleEl.textContent = `
+            @keyframes pulse {
+                0%   { transform: scale(1);   opacity: 0.8; }
+                50%  { transform: scale(2);   opacity: 0; }
+                100% { transform: scale(1);   opacity: 0; }
+            }
+            .leaflet-popup-content-wrapper {
+                background: #1a1a1d !important;
+                border: 1px solid rgba(255,123,0,0.4) !important;
+                border-radius: 16px !important;
+                box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,123,0,0.15) !important;
+                padding: 0 !important;
+            }
+            .leaflet-popup-content { margin: 0 !important; }
+            .leaflet-popup-tip { background: #1a1a1d !important; }
+            .leaflet-popup-close-button {
+                color: #888 !important;
+                font-size: 18px !important;
+                top: 10px !important; right: 12px !important;
+            }
+            .leaflet-popup-close-button:hover { color: #FF7B00 !important; }
+        `;
+        document.head.appendChild(styleEl);
+
+        // ── Locations data ────────────────────────────────
         const locations = [
             {
-                name: "CROUSTY WOK BÉZIERS",
-                coords: [43.3458, 3.2185],
-                address: "41 Av. Saint-Saëns, Béziers"
+                id: 'beziers',
+                name: 'CROUSTY WOK BÉZIERS',
+                city: 'Béziers',
+                address: '41 Av. Saint-Saëns, 34500 Béziers',
+                phone: '06 81 86 97 40',
+                tel: '0681869740',
+                hours: ['Lun–Jeu : 11h30–14h30 · 17h30–00h00', 'Ven–Dim : 11h30–00h00 (continu)'],
+                coords: [43.342574, 3.221212]
             },
             {
-                name: "CROUSTY WOK NARBONNE",
-                coords: [43.1809, 2.9987],
-                address: "10 Av. de Toulouse, Narbonne"
+                id: 'narbonne',
+                name: 'CROUSTY WOK NARBONNE',
+                city: 'Narbonne',
+                address: '10 Av. de Toulouse, 11100 Narbonne',
+                phone: '07 49 07 70 73',
+                tel: '0749077073',
+                hours: ['Lun–Jeu : 11h30–14h30 · 17h30–00h00', 'Ven–Dim : 11h30–00h00 (continu)'],
+                coords: [43.182473, 2.996320]
             },
             {
-                name: "CROUSTY WOK PERPIGNAN",
-                coords: [42.693, 2.891],
-                address: "8 Rue Jean Bart, Perpignan"
+                id: 'perpignan',
+                name: 'CROUSTY WOK PERPIGNAN',
+                city: 'Perpignan',
+                address: '8 Rue Jean Bart, 66000 Perpignan',
+                phone: '06 88 12 59 24',
+                tel: '0688125924',
+                hours: ['Lun–Jeu : 11h30–14h30 · 17h30–00h00', 'Ven–Dim : 11h30–00h00 (continu)'],
+                coords: [42.711760, 2.890534]
             }
         ];
 
-        // Add Markers
+        // ── Build popup HTML ──────────────────────────────
+        function popupHTML(loc) {
+            return `
+            <div style="padding:24px 24px 20px; min-width:240px; font-family:'Montserrat',sans-serif;">
+                <div style="font-family:'Anton',sans-serif; font-size:1rem; color:#FF7B00; letter-spacing:2px; margin-bottom:14px;">
+                    ${loc.name}
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <i class="fa-solid fa-location-dot" style="color:#FF7B00; margin-top:2px; flex-shrink:0;"></i>
+                        <span style="color:#ccc; font-size:0.85rem; line-height:1.5;">${loc.address}</span>
+                    </div>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <i class="fa-solid fa-phone" style="color:#FF7B00; flex-shrink:0;"></i>
+                        <span style="color:#ccc; font-size:0.85rem;">${loc.phone}</span>
+                    </div>
+                    <div style="display:flex; gap:10px; align-items:flex-start;">
+                        <i class="fa-solid fa-clock" style="color:#FF7B00; flex-shrink:0; margin-top:2px;"></i>
+                        <span style="color:#888; font-size:0.78rem; line-height:1.7;">${loc.hours[0]}<br>${loc.hours[1]}</span>
+                    </div>
+                </div>
+                <a href="tel:${loc.tel}" style="
+                    display:flex; align-items:center; justify-content:center; gap:8px;
+                    background: linear-gradient(135deg,#FF7B00,#FF5500);
+                    color:white; font-family:'Anton',sans-serif; font-size:0.85rem;
+                    letter-spacing:1.5px; padding:12px 20px; border-radius:50px;
+                    text-decoration:none; box-shadow:0 4px 18px rgba(255,123,0,0.4);
+                    transition:all 0.3s;
+                " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+                    <i class="fa-solid fa-phone"></i>&nbsp;APPELER POUR COMMANDER
+                </a>
+            </div>`;
+        }
+
+        // ── Add markers ───────────────────────────────────
+        const markers = {};
         locations.forEach(loc => {
-            L.marker(loc.coords, { icon: croustyIcon })
+            const marker = L.marker(loc.coords, { icon: makeIcon() })
                 .addTo(map)
-                .bindPopup('<strong style="color:#333">' + loc.name + '</strong><br>' + loc.address);
+                .bindPopup(popupHTML(loc), { maxWidth: 300, minWidth: 260 });
+
+            marker.on('click', function () {
+                map.flyTo(loc.coords, 15, { animate: true, duration: 1.2 });
+            });
+
+            markers[loc.id] = marker;
         });
 
-        // Mobile Menu Script
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
-            const nav = document.querySelector('.nav-links');
-            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-            if (nav.style.display === 'flex') {
-                nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.top = '70px';
-                nav.style.left = '0';
-                nav.style.width = '100%';
-                nav.style.background = '#151515';
-                nav.style.padding = '20px';
-                nav.style.borderBottom = '1px solid #333';
-            }
+        // ── Click on left-panel card → zoom + open popup ──
+        document.querySelectorAll('.location-card-row').forEach((card, i) => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') return; // let call buttons work normally
+                const loc = locations[i];
+                map.flyTo(loc.coords, 15, { animate: true, duration: 1.2 });
+                setTimeout(() => markers[loc.id].openPopup(), 1300);
+            });
         });
     </script>
+
 </body>
 
 </html>

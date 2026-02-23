@@ -80,6 +80,23 @@
             font-size: 1.1rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
+
+        .menu-img-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+            background: #111;
+        }
+
+        .menu-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            padding: 8px;
+        }
     </style>
 </head>
 
@@ -122,29 +139,46 @@
 
             <div class="menu-grid">
                 <!-- M -->
-                <div class="menu-item-card text-center" style="padding: 30px;">
-                    <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">M</span></h3>
-                    <div class="price-badge" style="display:inline-block; margin: 10px 0;">7,50 €</div>
-                    <p style="color:#888; font-size: 0.9rem;">Format idéal pour une petite faim <br><span
-                            class="highlight">+ Boisson 33cl incluse</span></p>
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="crousty.jpg" alt="Crousty M">
+                    </div>
+                    <div class="menu-details text-center" style="padding: 25px;">
+                        <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">M</span></h3>
+                        <div class="price-badge" style="display:inline-block; margin: 10px 0;">7,50 €</div>
+                        <p style="color:#888; font-size: 0.9rem; margin-top: 8px;">Format idéal pour une petite faim
+                            <br><span class="highlight">+ Boisson 33cl incluse</span>
+                        </p>
+                    </div>
                 </div>
                 <!-- L -->
-                <div class="menu-item-card text-center" style="padding: 30px; border-color: var(--primary);">
-                    <h3 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--primary);">CROUSTY <span
-                            class="highlight">L</span></h3>
-                    <div class="price-badge"
-                        style="display:inline-block; margin: 10px 0; background: white; color: black;">9,50 €</div>
-                    <p style="color:#ccc; font-size: 0.9rem;">Le Best-Seller <br><span class="highlight">+ Boisson 33cl
-                            incluse</span></p>
+                <div class="menu-item-card" style="border-color: var(--primary);">
+                    <div class="menu-img-placeholder">
+                        <img src="crousty.jpg" alt="Crousty L">
+                    </div>
+                    <div class="menu-details text-center" style="padding: 25px;">
+                        <h3 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--primary);">CROUSTY <span
+                                class="highlight">L</span></h3>
+                        <div class="price-badge"
+                            style="display:inline-block; margin: 10px 0; background: white; color: black;">9,50 €</div>
+                        <p style="color:#ccc; font-size: 0.9rem; margin-top: 8px;">Le Best-Seller <br><span
+                                class="highlight">+ Boisson 33cl incluse</span></p>
+                    </div>
                 </div>
                 <!-- XL -->
-                <div class="menu-item-card text-center" style="padding: 30px;">
-                    <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">XL</span></h3>
-                    <div class="price-badge" style="display:inline-block; margin: 10px 0;">12,50 €</div>
-                    <p style="color:#888; font-size: 0.9rem;">Pour les grosses faims <br><span class="highlight">+
-                            Boisson 33cl incluse</span></p>
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="crousty.jpg" alt="Crousty XL">
+                    </div>
+                    <div class="menu-details text-center" style="padding: 25px;">
+                        <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">XL</span></h3>
+                        <div class="price-badge" style="display:inline-block; margin: 10px 0;">12,50 €</div>
+                        <p style="color:#888; font-size: 0.9rem; margin-top: 8px;">Pour les grosses faims <br><span
+                                class="highlight">+ Boisson 33cl incluse</span></p>
+                    </div>
                 </div>
             </div>
+
             <!-- Note footer removed -->
         </section>
 
@@ -223,7 +257,7 @@
                 <!-- Nouilles -->
                 <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Nouilles">
+                        <img src="Nouille.jpg" alt="Nouilles">
                     </div>
                     <div class="menu-details" style="padding: 25px;">
                         <div class="item-header"
@@ -245,7 +279,7 @@
                 <!-- Pad Thaï -->
                 <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Pad Thaï">
+                        <img src="PadThai.jpg" alt="Pad Thaï">
                     </div>
                     <div class="menu-details" style="padding: 25px;">
                         <div class="item-header"
@@ -267,7 +301,7 @@
                 <!-- Riz Thaï -->
                 <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Riz Thaï">
+                        <img src="RizThai.jpg" alt="Riz Thaï">
                     </div>
                     <div class="menu-details" style="padding: 25px;">
                         <div class="item-header"
@@ -299,7 +333,7 @@
                 <!-- Tenders x3 -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Tenders x3">
+                        <img src="tenders.jpg" alt="Tenders x3">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -313,7 +347,7 @@
                 <!-- Tenders x5 -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Tenders x5">
+                        <img src="tenders.jpg" alt="Tenders x5">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -327,7 +361,7 @@
                 <!-- Nems x5 -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Nems x5">
+                        <img src="nems.jpg" alt="Nems x5">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -341,7 +375,7 @@
                 <!-- Nems x9 -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Nems x9">
+                        <img src="nems.jpg" alt="Nems x9">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -366,7 +400,7 @@
                 <!-- Mousse -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Mousse au chocolat">
+                        <img src="MousseAuChocolat.jpg" alt="Mousse au chocolat">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -380,7 +414,7 @@
                 <!-- Tarte Daim -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Tarte au Daim">
+                        <img src="TarteAuDaim.jpg" alt="Tarte au Daim">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -394,7 +428,7 @@
                 <!-- Tiramisu -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Tiramisu">
+                        <img src="Tiramisu.jpg" alt="Tiramisu">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -408,7 +442,7 @@
                 <!-- Café -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Café">
+                        <img src="nespresso.jpg" alt="Café Expresso">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -433,7 +467,7 @@
                 <!-- Coca Cola -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Coca Cola">
+                        <img src="CocaCola.jpg" alt="Coca Cola">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -447,7 +481,7 @@
                 <!-- Oasis -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Oasis">
+                        <img src="oasis.jpg" alt="Oasis">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -461,7 +495,7 @@
                 <!-- Lipton -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Lipton Ice Tea">
+                        <img src="lipton.jpg" alt="Lipton Ice Tea">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -475,7 +509,7 @@
                 <!-- Perrier -->
                 <div class="menu-item-card">
                     <div class="menu-img-placeholder">
-                        <img src="placeholder.jpg" alt="Perrier">
+                        <img src="perrier.jpg" alt="Perrier">
                     </div>
                     <div class="menu-details" style="padding: 20px;">
                         <div class="item-header"
@@ -490,8 +524,7 @@
         </section>
 
         <div class="text-center animate-up delay-2" style="margin-top: 60px;">
-            <a href="https://blackandwhite.belorder.com/" target="_blank" class="btn-glow"
-                style="display: inline-flex;">COMMANDER MAINTENANT</a>
+            <a href="restaurants.html" class="btn-glow" style="display: inline-flex;">COMMANDER MAINTENANT</a>
         </div>
 
     </main>
