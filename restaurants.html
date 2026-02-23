@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Restaurants - Crousty Wok</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <style>
+        .page-header {
+            padding: 160px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at center top, rgba(255, 123, 0, 0.15), transparent 70%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="croustywoklogo.png" alt="Crousty Wok" style="height: 50px;"></a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="carte.html">La Carte</a></li>
+            <li><a href="restaurants.html" class="active">Nos Restaurants</a></li>
+            <li><a href="restaurants.html" class="btn-nav-cta">COMMANDER</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button Removed as requested -->
+        <!-- <div class="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div> -->
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container animate-up">
+            <h1 class="hero-title" style="font-size: 3.5rem;">NOS <span class="text-gradient">RESTAURANTS</span></h1>
+            <p class="hero-subtitle">Retrouvez-nous à Béziers, Narbonne et Perpignan.</p>
+        </div>
+    </header>
+
+    <!-- Split Layout Content -->
+    <main class="container animate-up delay-1">
+
+        <div class="restaurants-layout">
+
+            <!-- LIST (Left) -->
+            <div class="locations-list">
+
+                <!-- Béziers -->
+                <div class="location-card-row">
+                    <h3>BÉZIERS</h3>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>41 Av. Saint-Saëns, 34500 Béziers</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>06 81 86 97 40</span>
+                    </div>
+                    <a href="tel:0681869740" class="btn btn-primary"
+                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                </div>
+
+                <!-- Narbonne -->
+                <div class="location-card-row">
+                    <h3>NARBONNE</h3>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>10 Av. de Toulouse, 11100 Narbonne</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>07 49 07 70 73</span>
+                    </div>
+                    <a href="tel:0749077073" class="btn btn-primary"
+                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                </div>
+
+                <!-- Perpignan -->
+                <div class="location-card-row">
+                    <h3>PERPIGNAN</h3>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>8 Rue Jean Bart, 66000 Perpignan</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>06 88 12 59 24</span>
+                    </div>
+                    <a href="tel:0688125924" class="btn btn-primary"
+                        style="margin-top:10px; font-size:1rem; padding:12px 30px; border-radius:50px; display:inline-block; text-align:center;">Appeler</a>
+                </div>
+
+            </div>
+
+            <!-- MAP (Right) -->
+            <div class="map-container-sticky">
+                <!-- Leaflet Map Container -->
+                <div id="map" style="width: 100%; height: 100%; z-index: 1;"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- Centered Logo -->
+            <div class="footer-logo-center">
+                <a href="#" class="logo"><img src="croustywoklogo.png" alt="Crousty Wok" style="height: 120px;"></a>
+            </div>
+
+            <div class="footer-content">
+                <!-- Col 1: Explorer -->
+                <div class="footer-column">
+                    <h4>EXPLORER</h4>
+                    <ul>
+                        <li><a href="index.html">NOTRE CONCEPT</a></li>
+                        <li><a href="carte.html">LA CARTE</a></li>
+                        <li><a href="restaurants.html">NOS RESTAURANTS</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 2: Contact -->
+                <div class="footer-column">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><a href="#">DEVENIR FRANCHISÉ</a></li>
+                        <li><a href="#">NOUS REJOINDRE</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Infos Légales -->
+                <div class="footer-column">
+                    <h4>INFOS LÉGALES</h4>
+                    <ul>
+                        <li><a href="#">CGUV</a></li>
+                        <li><a href="#">MENTIONS LÉGALES</a></li>
+                        <li><a href="#">POLITIQUE DE COOKIES</a></li>
+                        <li><a href="#">POLITIQUE DE CONFIDENTIALITÉ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Suivez-nous -->
+                <div class="footer-column">
+                    <h4>SUIVEZ-NOUS</h4>
+                    <div class="social-icons-footer">
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Crousty Wok – Site réalisé par OSTIRO</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        // Init Map
+        // Centered roughly between the 3 cities
+        var map = L.map('map').setView([43.0, 3.0], 9);
+
+        // Dark Mode Tiles (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Custom Icon for Crousty Wok (Orange Marker)
+        var croustyIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        // Locations Data
+        const locations = [
+            {
+                name: "CROUSTY WOK BÉZIERS",
+                coords: [43.3458, 3.2185],
+                address: "41 Av. Saint-Saëns, Béziers"
+            },
+            {
+                name: "CROUSTY WOK NARBONNE",
+                coords: [43.1809, 2.9987],
+                address: "10 Av. de Toulouse, Narbonne"
+            },
+            {
+                name: "CROUSTY WOK PERPIGNAN",
+                coords: [42.693, 2.891],
+                address: "8 Rue Jean Bart, Perpignan"
+            }
+        ];
+
+        // Add Markers
+        locations.forEach(loc => {
+            L.marker(loc.coords, { icon: croustyIcon })
+                .addTo(map)
+                .bindPopup('<strong style="color:#333">' + loc.name + '</strong><br>' + loc.address);
+        });
+
+        // Mobile Menu Script
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+            if (nav.style.display === 'flex') {
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = '#151515';
+                nav.style.padding = '20px';
+                nav.style.borderBottom = '1px solid #333';
+            }
+        });
+    </script>
+</body>
+
+</html>

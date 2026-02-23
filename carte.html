@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carte - Crousty Wok</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific Menu Page Styles (Inline for quick iteration, move to CSS later if needed) */
+        .page-header {
+            padding: 180px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at center top, rgba(255, 123, 0, 0.15), transparent 70%);
+        }
+
+        .menu-section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: white;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .protein-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .protein-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .protein-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(255, 123, 0, 0.1);
+        }
+
+        .price-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation (Common) -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="croustywoklogo.png" alt="Crousty Wok" style="height: 50px;"></a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="carte.html" class="active">La Carte</a></li>
+            <li><a href="restaurants.html">Nos Restaurants</a></li>
+            <li><a href="restaurants.html" class="btn-nav-cta">COMMANDER</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button Removed as requested -->
+        <!-- <div class="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div> -->
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container animate-up">
+            <h1 class="hero-title" style="font-size: 4rem;">DÉCOUVREZ <br><span class="text-gradient">NOTRE CARTE</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">Des saveurs authentiques, préparées à la commande.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- SECTION 1: CROUSTY (MOVED UP) -->
+        <section class="menu-category animate-up delay-1">
+            <div class="text-center">
+                <h2 class="menu-section-title">LES CROUSTY</h2>
+                <!-- Removed subtitle as requested -->
+            </div>
+
+            <div class="menu-grid">
+                <!-- M -->
+                <div class="menu-item-card text-center" style="padding: 30px;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">M</span></h3>
+                    <div class="price-badge" style="display:inline-block; margin: 10px 0;">7,50 €</div>
+                    <p style="color:#888; font-size: 0.9rem;">Format idéal pour une petite faim <br><span
+                            class="highlight">+ Boisson 33cl incluse</span></p>
+                </div>
+                <!-- L -->
+                <div class="menu-item-card text-center" style="padding: 30px; border-color: var(--primary);">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--primary);">CROUSTY <span
+                            class="highlight">L</span></h3>
+                    <div class="price-badge"
+                        style="display:inline-block; margin: 10px 0; background: white; color: black;">9,50 €</div>
+                    <p style="color:#ccc; font-size: 0.9rem;">Le Best-Seller <br><span class="highlight">+ Boisson 33cl
+                            incluse</span></p>
+                </div>
+                <!-- XL -->
+                <div class="menu-item-card text-center" style="padding: 30px;">
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">CROUSTY <span class="highlight">XL</span></h3>
+                    <div class="price-badge" style="display:inline-block; margin: 10px 0;">12,50 €</div>
+                    <p style="color:#888; font-size: 0.9rem;">Pour les grosses faims <br><span class="highlight">+
+                            Boisson 33cl incluse</span></p>
+                </div>
+            </div>
+            <!-- Note footer removed -->
+        </section>
+
+        <!-- SECTION 2: BASES WOK (MOVED DOWN) -->
+        <section class="menu-category animate-up delay-2">
+            <div class="text-center">
+                <h2 class="menu-section-title">BASES WOK</h2>
+                <p
+                    style="color:#888; margin-top:14px; font-size:0.85rem; text-transform:uppercase; letter-spacing:2px;">
+                    9,90 € · Boisson 33cl incluse</p>
+            </div>
+
+            <!-- Formule visuelle : Protéine + Base -->
+            <div style="margin-top:40px; display:flex; flex-direction:column; align-items:center; gap:0;">
+
+                <!-- ROW 1 : Protéines avec OU entre elles -->
+                <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+
+                    <!-- Poulet -->
+                    <div
+                        style="background:linear-gradient(145deg,#1c1c1f,#141416); border:1px solid rgba(255,123,0,0.3); border-radius:16px; padding:18px 20px; text-align:center; min-width:110px;">
+                        <div style="font-size:1.8rem; margin-bottom:6px;">🍗</div>
+                        <div
+                            style="font-family:'Anton',sans-serif; font-size:0.95rem; color:white; letter-spacing:1px; text-transform:uppercase;">
+                            Poulet</div>
+                    </div>
+
+                    <span
+                        style="color:#444; font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:2px;">OU</span>
+
+                    <!-- Boeuf -->
+                    <div
+                        style="background:linear-gradient(145deg,#1c1c1f,#141416); border:1px solid rgba(255,123,0,0.3); border-radius:16px; padding:18px 20px; text-align:center; min-width:110px;">
+                        <div style="font-size:1.8rem; margin-bottom:6px;">🥩</div>
+                        <div
+                            style="font-family:'Anton',sans-serif; font-size:0.95rem; color:white; letter-spacing:1px; text-transform:uppercase;">
+                            Boeuf</div>
+                    </div>
+
+                    <span
+                        style="color:#444; font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:2px;">OU</span>
+
+                    <!-- Crevettes -->
+                    <div
+                        style="background:linear-gradient(145deg,#1c1c1f,#141416); border:1px solid rgba(255,123,0,0.3); border-radius:16px; padding:18px 20px; text-align:center; min-width:110px;">
+                        <div style="font-size:1.8rem; margin-bottom:6px;">🍤</div>
+                        <div
+                            style="font-family:'Anton',sans-serif; font-size:0.95rem; color:white; letter-spacing:1px; text-transform:uppercase;">
+                            Crevettes</div>
+                    </div>
+
+                    <span
+                        style="color:#444; font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:2px;">OU</span>
+
+                    <!-- Végé -->
+                    <div
+                        style="background:linear-gradient(145deg,#1c1c1f,#141416); border:1px solid rgba(255,123,0,0.3); border-radius:16px; padding:18px 20px; text-align:center; min-width:110px;">
+                        <div style="font-size:1.8rem; margin-bottom:6px;">🥦</div>
+                        <div
+                            style="font-family:'Anton',sans-serif; font-size:0.95rem; color:white; letter-spacing:1px; text-transform:uppercase;">
+                            Végé</div>
+                    </div>
+                </div>
+
+                <!-- Connecteur + -->
+                <div
+                    style="font-family:'Anton',sans-serif; font-size:3rem; color:#FF7B00; line-height:1; margin:24px 0 28px; opacity:0.9;">
+                    +</div>
+
+            </div><!-- end flex column -->
+
+            <!-- Grandes cartes bases avec OU entre elles -->
+            <div
+                style="display:flex; align-items:stretch; justify-content:center; gap:0; flex-wrap:wrap; margin-top:0;">
+
+                <!-- Nouilles -->
+                <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Nouilles">
+                    </div>
+                    <div class="menu-details" style="padding: 25px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <h3 style="font-size: 1.6rem; color:white;">NOUILLES</h3>
+                            <span class="price-badge">9,90 €</span>
+                        </div>
+                        <p style="color:#999; font-size:0.9rem; margin-bottom:4px;">+ Protéine au choix</p>
+                        <p style="color:#999; font-size:0.9rem;"><span class="highlight">+ Boisson 33cl incluse</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- OU separator -->
+                <div
+                    style="display:flex; align-items:center; padding:0 16px; color:#444; font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:2px; flex-shrink:0;">
+                    OU</div>
+
+                <!-- Pad Thaï -->
+                <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Pad Thaï">
+                    </div>
+                    <div class="menu-details" style="padding: 25px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <h3 style="font-size: 1.6rem; color:white;">PAD THAÏ</h3>
+                            <span class="price-badge">9,90 €</span>
+                        </div>
+                        <p style="color:#999; font-size:0.9rem; margin-bottom:4px;">+ Protéine au choix</p>
+                        <p style="color:#999; font-size:0.9rem;"><span class="highlight">+ Boisson 33cl incluse</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- OU separator -->
+                <div
+                    style="display:flex; align-items:center; padding:0 16px; color:#444; font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:2px; flex-shrink:0;">
+                    OU</div>
+
+                <!-- Riz Thaï -->
+                <div class="menu-item-card" style="flex:1; min-width:220px; max-width:320px;">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Riz Thaï">
+                    </div>
+                    <div class="menu-details" style="padding: 25px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <h3 style="font-size: 1.6rem; color:white;">RIZ THAÏ</h3>
+                            <span class="price-badge">9,90 €</span>
+                        </div>
+                        <p style="color:#999; font-size:0.9rem; margin-bottom:4px;">+ Protéine au choix</p>
+                        <p style="color:#999; font-size:0.9rem;"><span class="highlight">+ Boisson 33cl incluse</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+        <!-- SECTION 3: SIDES (Reformatted as Cards with Images) -->
+
+        <section class="menu-category animate-up delay-2">
+            <div class="text-center">
+                <h2 class="menu-section-title">SIDES</h2>
+            </div>
+
+            <div class="menu-grid">
+
+                <!-- Tenders x3 -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Tenders x3">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.4rem; color:white;">TENDERS x3</h3>
+                            <span class="price-badge">5,00 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tenders x5 -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Tenders x5">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.4rem; color:white;">TENDERS x5</h3>
+                            <span class="price-badge">7,00 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nems x5 -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Nems x5">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.4rem; color:white;">NEMS x5</h3>
+                            <span class="price-badge">6,00 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nems x9 -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Nems x9">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.4rem; color:white;">NEMS x9</h3>
+                            <span class="price-badge">10,00 €</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: DESSERTS (Reformatted as Cards with Images) -->
+        <section class="menu-category animate-up delay-2">
+            <div class="text-center">
+                <h2 class="menu-section-title">DOUCEURS</h2>
+            </div>
+
+            <div class="menu-grid">
+
+                <!-- Mousse -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Mousse au chocolat">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">MOUSSE CHOCO</h3>
+                            <span class="price-badge">2,90 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarte Daim -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Tarte au Daim">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">TARTE DAIM</h3>
+                            <span class="price-badge">2,90 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tiramisu -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Tiramisu">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">TIRAMISU</h3>
+                            <span class="price-badge">2,90 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Café -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Café">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">CAFÉ EXPRESSO</h3>
+                            <span class="price-badge">1,50 €</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: BOISSONS (New Section) -->
+        <section class="menu-category animate-up delay-2">
+            <div class="text-center">
+                <h2 class="menu-section-title">BOISSONS 33CL</h2>
+            </div>
+
+            <div class="menu-grid">
+
+                <!-- Coca Cola -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Coca Cola">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">COCA COLA</h3>
+                            <span class="price-badge">1,50 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oasis -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Oasis">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">OASIS</h3>
+                            <span class="price-badge">1,50 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lipton -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Lipton Ice Tea">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">LIPTON</h3>
+                            <span class="price-badge">1,50 €</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Perrier -->
+                <div class="menu-item-card">
+                    <div class="menu-img-placeholder">
+                        <img src="placeholder.jpg" alt="Perrier">
+                    </div>
+                    <div class="menu-details" style="padding: 20px;">
+                        <div class="item-header"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="font-size: 1.3rem; color:white;">PERRIER</h3>
+                            <span class="price-badge">1,50 €</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="text-center animate-up delay-2" style="margin-top: 60px;">
+            <a href="https://blackandwhite.belorder.com/" target="_blank" class="btn-glow"
+                style="display: inline-flex;">COMMANDER MAINTENANT</a>
+        </div>
+
+    </main>
+
+    <!-- Footer (Multi-column) -->
+    <footer>
+        <div class="container">
+            <!-- Centered Logo -->
+            <div class="footer-logo-center">
+                <a href="#" class="logo"><img src="croustywoklogo.png" alt="Crousty Wok" style="height: 120px;"></a>
+            </div>
+
+            <div class="footer-content">
+                <!-- Col 1: Explorer -->
+                <div class="footer-column">
+                    <h4>EXPLORER</h4>
+                    <ul>
+                        <li><a href="index.html">NOTRE CONCEPT</a></li>
+                        <li><a href="carte.html">LA CARTE</a></li>
+                        <li><a href="restaurants.html">NOS RESTAURANTS</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 2: Contact -->
+                <div class="footer-column">
+                    <h4>CONTACT</h4>
+                    <ul>
+                        <li><a href="#">DEVENIR FRANCHISÉ</a></li>
+                        <li><a href="#">NOUS REJOINDRE</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Infos Légales -->
+                <div class="footer-column">
+                    <h4>INFOS LÉGALES</h4>
+                    <ul>
+                        <li><a href="#">CGUV</a></li>
+                        <li><a href="#">MENTIONS LÉGALES</a></li>
+                        <li><a href="#">POLITIQUE DE COOKIES</a></li>
+                        <li><a href="#">POLITIQUE DE CONFIDENTIALITÉ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Suivez-nous -->
+                <div class="footer-column">
+                    <h4>SUIVEZ-NOUS</h4>
+                    <div class="social-icons-footer">
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Crousty Wok – Site réalisé par OSTIRO</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Use exact same mobile menu script logic
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+            if (nav.style.display === 'flex') {
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = '#151515';
+                nav.style.padding = '20px';
+                nav.style.borderBottom = '1px solid #333';
+            }
+        });
+    </script>
+</body>
+
+</html>

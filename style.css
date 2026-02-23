@@ -1,0 +1,915 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Colors */
+    --bg-color: #0F0F0F;
+    /* Deep Black */
+    --card-bg: #18181B;
+    /* Dark Zinc */
+    --text-main: #FFFFFF;
+    --text-muted: #D1D5DB;
+
+    /* Warm & Gourmand Palette */
+    --primary: #FF7B00;
+    /* Vivid Orange */
+    --primary-glow: rgba(255, 123, 0, 0.4);
+    --secondary: #FF4D00;
+    /* Red-Orange for Gradients */
+
+    /* Fonts */
+    --font-heading: 'Anton', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    /* Spacing & Layout */
+    --container-width: 1200px;
+    --header-height: 90px;
+    --radius-soft: 16px;
+    --radius-round: 50px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul {
+    list-style: none;
+}
+
+img,
+video {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   2. UTILITIES & TYPOGRAPHY
+   ========================================= */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, #FFCC00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+/* =========================================
+   3. ANIMATIONS
+   ========================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 var(--primary-glow);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 123, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 123, 0, 0);
+    }
+}
+
+.animate-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    /* Starts hidden */
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+/* =========================================
+   4. NAVIGATION (Glassmorphism)
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: var(--container-width);
+    height: 70px;
+    background: rgba(10, 10, 10, 0.85);
+    /* Darker, more opaque background for readability */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    /* More padding */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    /* Better readability for logo */
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    /* More space between links */
+    align-items: center;
+}
+
+.nav-links a {
+    font-weight: 500;
+    /* Slightly lighter weight for less visual noise */
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    /* Softer white */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* Commander Button from Image Inspiration */
+.btn-nav-cta {
+    background: #ff7b00;
+    /* Solid vibrant orange */
+    color: white !important;
+    padding: 12px 35px;
+    /* Bigger pill shape */
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    /* Readable text */
+    box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
+    /* Soft glow, not harsh */
+    border: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-nav-cta:hover {
+    transform: scale(1.05);
+    background: #ff8c00;
+    box-shadow: 0 0 30px rgba(255, 123, 0, 0.6);
+}
+
+/* Hide Hamburger Menu by Default (Desktop) */
+.mobile-menu-btn {
+    display: none;
+    /* Hidden by default on desktop */
+}
+
+/* =========================================
+   5. HERO SECTION (Immersive)
+   ========================================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%) scale(1.1);
+    /* Slight zoom for cinema feel */
+    z-index: -1;
+    filter: brightness(0.85) contrast(1.1);
+}
+
+/* Gradient Overlay instead of flat black */
+.hero-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(15, 15, 15, 1) 95%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: 5rem;
+    /* Massive title */
+    margin-bottom: 20px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    line-height: 0.95;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: var(--text-main);
+    font-weight: 500;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Hero Buttons */
+.btn-glow {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 0 20px var(--primary-glow);
+    animation: pulse-glow 3s infinite;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-glow:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 40px var(--primary-glow);
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+
+/* =========================================
+   6. SECTIONS (Concept & Social)
+   ========================================= */
+.concept-section {
+    padding: 120px 0;
+    position: relative;
+}
+
+.concept-text {
+    background: var(--card-bg);
+    padding: 60px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    position: relative;
+    /* Soft Glow behind box */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.concept-text::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary), transparent, transparent);
+    z-index: -1;
+    border-radius: 22px;
+    opacity: 0.3;
+}
+
+.social-section {
+    padding: 55px 0;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.social-item {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 9/16;
+    transition: transform 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: block;
+    /* Ensure block display for anchor */
+}
+
+.social-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This makes the image fill the vertical card */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.social-item:hover {
+    transform: translateY(-10px) rotate(2deg);
+    z-index: 2;
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.social-item:hover img {
+    transform: scale(1.1);
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+    opacity: 0.8;
+    z-index: 3;
+    transition: opacity 0.3s;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+}
+
+.social-item:hover .play-icon {
+    opacity: 1;
+    transform: scale(1.1) translate(-45%, -45%);
+    /* Adjust for translate centering */
+}
+
+/* =========================================
+   6b. SOCIAL VIDEO GRID (Thumbnails cliquables)
+   ========================================= */
+.social-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0 auto 30px auto;
+    height: 300px;
+    max-width: 650px;
+}
+
+.video-grid-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    height: 100%;
+}
+
+/* Carte vidéo de base */
+.video-card {
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 100%;
+}
+
+.video-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.video-card:hover img {
+    transform: scale(1.06);
+}
+
+/* Overlay sombre + bouton play */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.35s ease;
+}
+
+.video-card:hover .video-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Bouton play rond */
+.video-play-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f0f0f;
+    font-size: 1rem;
+    padding-left: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.video-card:hover .video-play-btn {
+    transform: scale(1.2);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Featured card : plus grand bouton play */
+.video-card--featured .video-play-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.5rem;
+    padding-left: 5px;
+}
+
+/* Bouton "Suivez-nous sur Instagram" (dégradé officiel Instagram) */
+.btn-social-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #515bd4 100%);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(221, 42, 123, 0.35);
+}
+
+.btn-social-follow i {
+    font-size: 1.3rem;
+}
+
+.btn-social-follow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(221, 42, 123, 0.55);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .social-video-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .video-card--featured {
+        aspect-ratio: 4 / 3;
+        height: auto;
+    }
+
+    .video-grid-right {
+        height: auto;
+    }
+
+    .video-grid-right .video-card {
+        aspect-ratio: 1 / 1;
+        height: auto;
+    }
+}
+
+/* =========================================
+   7. CARTE & RESTAURANT PAGES STYLES
+   ========================================= */
+.menu-header {
+    margin-top: 100px;
+    /* Space for fixed nav */
+    padding: 60px 0;
+}
+
+.menu-category {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    margin-bottom: 60px;
+}
+
+.category-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-title::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 30px;
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.menu-item-card {
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-5px);
+    background: #2a2a2a;
+}
+
+.menu-img-placeholder {
+    height: 220px;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.menu-img-placeholder img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+
+.menu-item-card:hover .menu-img-placeholder img {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   7. FOOTER (Multi-column)
+   ========================================= */
+footer {
+    background-color: #000;
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+.footer-logo-center {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer-column h4 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-column a {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: var(--primary);
+}
+
+.social-icons-footer {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons-footer a {
+    font-size: 1.2rem;
+    color: var(--text-main);
+}
+
+.social-icons-footer a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #444;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%;
+        top: 0;
+        border-radius: 0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background: rgba(15, 15, 15, 0.95);
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        padding: 0 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .btn-glow,
+    .btn-glass {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .concept-text {
+        padding: 30px;
+    }
+}
+
+/* =========================================
+   9. RESTAURANTS SPECIFIC LAYOUT
+   ========================================= */
+.restaurants-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Map on top on mobile, List below */
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.location-card-row {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.location-card-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.location-card-row:hover {
+    background: #202023;
+    transform: translateX(5px);
+    border-color: rgba(255, 123, 0, 0.3);
+}
+
+.location-card-row:hover::before {
+    opacity: 1;
+}
+
+.location-card-row h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.info-item i {
+    color: var(--primary);
+    margin-top: 4px;
+}
+
+.map-container-sticky {
+    width: 100%;
+    height: 400px;
+    background: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.map-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: invert(90%) hue-rotate(180deg);
+    /* Dark mode map approximation */
+}
+
+/* Desktop Layout */
+@media (min-width: 992px) {
+    .restaurants-layout {
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        /* List fixed width, Map takes rest */
+        gap: 40px;
+        flex-direction: row;
+        align-items: start;
+    }
+
+    .map-container-sticky {
+        position: sticky;
+        top: 110px;
+        /* Below navbar */
+        height: 600px;
+        /* Taller map on desktop */
+    }
+}
